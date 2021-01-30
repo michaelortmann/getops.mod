@@ -1,0 +1,5 @@
+DESC:This module provides botnet opping, inviting, limit raising,
+DESC:key sharing and unbanning methods - the *getops* way.
+DESC:
+DESC:You will normally want to ENABLE this module.
+DEPENDS:irc server channels

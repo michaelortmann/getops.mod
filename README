@@ -1,0 +1,91 @@
+Readme file for getops.mod for Eggdrop 1.8.x or later
+
+by Brain <brain@fbi.hu>
+
+Introduction
+------------
+
+This module uses the functions of the new 3.x series getops.tcl, so opping,
+inviting and other stuff becomes faster then ever. It has all the great
+functions that getops 3.x has, like:
+
+  - Really new op asking-giving style. The bot who joins (or wants to get
+    op somehow) does nothing. The others, who have been on the chan for some 
+    time, see the bot joining, and offer an op immediately. You can set in the
+    .conf file, how many op giving requests should your bot reply. So, no op 
+    flood, and no delay with op giving.
+    
+  - Modechange watch. If a bot gets deopped, it asks for op right away. Or
+    the other way: if none of the bots are opped on the channel, and one of 
+    them gets op, it instantly offers op to the (opless) others.
+    
+  - Link watch. If a bot links, the others offer an op (on the channels the 
+    bot is on).
+  
+  - New "let me in" style. If a channel is full (limit), the bot, who wants 
+    to join, asks for limit raise, the others raise it and send back an 
+    invitation to join. You don't have to wait until the bot tries to get in 
+    once again. (It's the same, when a bot's address is banned.)
+    
+The module is fully compatible with the getops tcl, so if one of your bot has
+getops.tcl in it, and the others have getops.mod, no problem, it will work nice.
+
+
+Installation
+------------
+
+This modified version of getops.mod requires eggdrop 1.8.0 or better and you
+need to load irc, server and channels module in your eggdrop config file. If you
+have a compiled (and running) eggdrop you have to recompile it!
+
+ 1. Go to the directory where you have the eggdrop source code.
+     (Normally the directory where you have extracted the eggdrop tarball)
+ 2. Go to src/mod/ directory and copy the getops.mod tarball there.
+ 3. Type "tar zxvf getops.mod-x.x.x.tar.gz"
+    (If that doesn't work type first "gzip -d getops.mod-x.x.x.tar.gz"
+    and then "tar -xvf getops.mod-x.x.x.tar")
+ 4. Configure and compile eggdrop like you would normally do it.
+    (e.g, ./configure ; make config ; make ; make install)
+		    
+I also included the latest version of getops.tcl (3.0c). The script is fully compatible
+with the module, so if you have a bot that you cannot recompile with the
+module (a precompiled one or something like that), just add the tcl script
+to the it's config file, and that's all.
+
+The getops.mod settings can be found in the getops.conf file.
+You should copy it to your eggdrop directory, edit it if you want
+and then add line "source getops.conf" to your eggdrop config file
+or you can just copy the contents of the file to your eggdrop config file.
+If you want to use the default settings all you need to do is to add
+line "loadmodule getops" to your eggdrop config file. If your bot is
+running you have to restart it (or try typing 'loadmod getops' but it might
+crash, so do it carefully!)
+
+
+Feedback & stuff
+----------------
+
+This module is no longer supported by the original author. It's provided for
+your convenience. If it doesn't compile or run, you can write to pseudo@egg6.net
+For any other problems, I'm sorry but no support will be provided.
+
+Latest version
+--------------
+
+This module is no longer developed. For compatibility updates, look at:
+
+http://eggdrop.egg6.net/modules/
+
+You can also find here other 3rd party modules updated by me to run on recent
+eggdrop versions.
+
+
+License
+-------
+
+getops.mod is released to the public under the terms of the GNU General Public 
+License. For the complete license please see the file called COPYING in your 
+eggdrop directory.
+
+
+Copyright (C) 2003  Brain <brain@fbi.hu>
