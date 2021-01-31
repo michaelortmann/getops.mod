@@ -10,7 +10,7 @@ char chan[81];         /* Channel name                           */
 int reqtime;           /* Time to wait before running            */
 char todowhat[80];     /* what to do                             */
 };
-static struct delay_t *find_gdelay(char *, char *);
+static struct delay_t *find_gdelay(char *);
 static struct delay_t *add_gdelay(char *, char *, int);
 static void del_gdelay(struct delay_t *);
 static void check_gdelay();

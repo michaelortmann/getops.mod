@@ -218,14 +218,14 @@ static int gop_gspec(char *bot, char *com, char *par)
    usnick = newsplit(&par);
    if (!egg_strcasecmp(subcom, "lim")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
-	 if (!find_gdelay(chname, "join"))
+	 if (!find_gdelay(chname))
             d = add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }
    }
    if (!egg_strcasecmp(subcom, "ban")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
-         if (!find_gdelay(chname, "join"))
+         if (!find_gdelay(chname))
             d = add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }

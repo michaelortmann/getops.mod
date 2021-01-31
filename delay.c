@@ -21,17 +21,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-static struct delay_t *find_gdelay(char *chan, char *micsinal)
+static struct delay_t *find_gdelay(char *chan)
 {
   struct delay_t *d = NULL;
 
   for (d = start_delay; d; d = d->next)
-    if (!egg_strcasecmp(micsinal, "join")) 
-       if ((!rfc_casecmp(d->chan, chan)) && (!egg_strcasecmp(d->todowhat, "join")))
-          return d;
-    if (!egg_strcasecmp(micsinal, "delete")) 
-       if ((!rfc_casecmp(d->chan, chan)) && (!egg_strcasecmp(d->todowhat, "delete")))
-          return d;
+    if ((!rfc_casecmp(d->chan, chan)) && (!egg_strcasecmp(d->todowhat, "join")))
+      return d;
   return NULL;
 }
 
