@@ -18,10 +18,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
-/*
- * Sep 2010: Updated by pseudo to support eggdrop 1.8.x
- */
-		    
+
 #define MODULE_NAME "getops"
 #define MAKING_GETOPS
 #define MODULE_VERSION "1.0.1"
@@ -102,7 +99,7 @@ static Function getops_table[] =
 char *getops_start(Function * global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, getops_table, 1, 0);
+  module_register(MODULE_NAME, getops_table, 1, 1);
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
     module_undepend(MODULE_NAME);
     return "This module requires Eggdrop 1.8.4 or later.";

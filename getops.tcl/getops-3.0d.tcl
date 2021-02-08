@@ -1,4 +1,4 @@
-# Getops 3.0c
+# Getops 3.0d
 # For 1.6.x (maybe others too)
 
 # This script is used for bots to request and give ops to each other. 
@@ -14,6 +14,9 @@
 
 # -----------------------------------------------------------------------------
 
+# 3.0d by Michael Ortmann
+# - Fixed typos
+
 # 3.0c by Brain
 # - Fixed a bug in op requesting.
 # - Fixed key, limit, unban, invite requesting. Now it really works. BUT: it's now done with
@@ -25,7 +28,7 @@
 # - Fixed too much CPU time usage bug. Because checkforneedop, too much CPU time was used. Now its
 #   more effective and uses less time.
 # - Also fixed a little bug in gop_join. (When a bot joined, it was not tested if its linked or not.)
- 
+
 # 3.0a by Brain
 # - The whole thing was completely rewritten. Now when a bot joins in a channel the others
 #   offer him op. With this it became really fast and with go_botnum you can set the number
@@ -512,4 +515,4 @@ proc ngop_op {chan nick bot} {
 
 set getops_loaded 1
 
-putlog "GetOps v3.0c loaded."
+putlog "GetOps v3.0d loaded."

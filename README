@@ -1,4 +1,4 @@
-Readme file for getops.mod for Eggdrop 1.8.x or later
+Readme file for getops.mod for Eggdrop 1.8.4 or later
 
 by Brain <brain@fbi.hu>
 
@@ -34,7 +34,7 @@ getops.tcl in it, and the others have getops.mod, no problem, it will work nice.
 Installation
 ------------
 
-This modified version of getops.mod requires eggdrop 1.8.0 or better and you
+This modified version of getops.mod requires eggdrop 1.8.4 or better and you
 need to load irc, server and channels module in your eggdrop config file. If you
 have a compiled (and running) eggdrop you have to recompile it!
 
@@ -46,8 +46,8 @@ have a compiled (and running) eggdrop you have to recompile it!
     and then "tar -xvf getops.mod-x.x.x.tar")
  4. Configure and compile eggdrop like you would normally do it.
     (e.g, ./configure ; make config ; make ; make install)
-		    
-I also included the latest version of getops.tcl (3.0c). The script is fully compatible
+
+I also included the latest version of getops.tcl (3.0d). The script is fully compatible
 with the module, so if you have a bot that you cannot recompile with the
 module (a precompiled one or something like that), just add the tcl script
 to the it's config file, and that's all.
