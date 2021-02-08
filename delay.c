@@ -1,7 +1,5 @@
 /*
  * delay.c -- timing part of getops.mod
- *
- * $Id: delay.c,v 1.0 2003/09/18 02:27:24 sup Exp $
  */
 /* 
  * Copyright (C) 2003  Brain <brain@fbi.hu>

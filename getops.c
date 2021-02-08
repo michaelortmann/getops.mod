@@ -1,7 +1,5 @@
 /*
 * getops.c -- the initializing part of getops.mod
-*
-* $Id: getops.c,v 1.0 2003/09/18 02:27:24 sup Exp $
 */
 /*
 * Copyright (C) 2003  Brain <brain@fbi.hu>

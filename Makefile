@@ -1,5 +1,4 @@
 # Makefile for src/mod/getops.mod/
-# $Id: Makefile,v 1.3 2000/08/25 20:19:16 sup Exp $
 
 srcdir = .
 

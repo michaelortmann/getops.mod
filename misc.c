@@ -1,8 +1,6 @@
 /*
 *
 * misc.c -- miscellaneous functions for getops.mod
-*
-* $Id: misc.c,v 1.0 2003/09/18 02:27:24 sup Exp $
 */
 /*
 * Copyright (C) 2003  Brain <brain@fbi.hu>
