@@ -27,7 +27,7 @@
 # - Also fixed a little bug in gop_join. (When a bot joined, it was not tested if its linked or not.)
  
 # 3.0a by Brain
-# - The whole thing was completly rewritten. Now when a bot joins in a channel the others
+# - The whole thing was completely rewritten. Now when a bot joins in a channel the others
 #   offer him op. With this it became really fast and with go_botnum you can set the number
 #   of bots to ask op from. This should be great for bigger botnets against op flood.
 # - Modechange watch included. When bots in a channel are opless, and one of them gets op,
@@ -211,7 +211,7 @@ proc botnet_request {bot com args} {
      putbot $bot "gop_resp I am not +o on $chan."
     }
    } {
-    putbot $bot "gop_resp You're noe in my +o list on $chan."
+    putbot $bot "gop_resp You're not in my +o list on $chan."
    }
    return 1
   }
@@ -405,7 +405,7 @@ proc gop_need {chan need} {
   }
   
   default {
-  putlog "GetOps: Something is going wrong.. I should't receive $need as a channel need..."
+  putlog "GetOps: Something is going wrong.. I shouldn't receive $need as a channel need..."
   }
  
   }
