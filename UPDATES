@@ -1,6 +1,7 @@
 1.2
--  Fix incompatible pointer types (Michael Ortmann)
+- Fix unused but set variable (Michael Ortmann)
+- Fix incompatible pointer types (Michael Ortmann)
 1.1
--  Now also works with eggdrop 1.8.4. (Michael Ortmann)
+- Now also works with eggdrop 1.8.4. (Michael Ortmann)
 1.0
--  Modified to run on eggdrop 1.8.x (pseudo)
+- Modified to run on eggdrop 1.8.x (pseudo)

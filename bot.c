@@ -208,8 +208,7 @@ static int gop_gspec(char *bot, char *com, char *par)
    int i;
    char *subcom, *chname, *usnick, data[256];
    struct chanset_t *chan = NULL;
-   struct delay_t *d = NULL;
-   	     
+
    Context;
    subcom = newsplit(&par);
    chname = newsplit(&par);
@@ -217,14 +216,14 @@ static int gop_gspec(char *bot, char *com, char *par)
    if (!egg_strcasecmp(subcom, "lim")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
 	 if (!find_gdelay(chname))
-            d = add_gdelay(chname, "join", 3);
+            add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }
    }
    if (!egg_strcasecmp(subcom, "ban")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
          if (!find_gdelay(chname))
-            d = add_gdelay(chname, "join", 3);
+            add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }
    }
@@ -320,9 +319,8 @@ static int gop_gneedop(char *bot, char *com, char *par)
 {
    int i = 0;
    char *chname, data[256];
-   struct reqop_t *r = NULL;   
-   struct delay_t *d = NULL;
-   
+   struct reqop_t *r = NULL;
+
    Context;
    chname = newsplit(&par);
    if (!(r = find_req(chname))) {
@@ -332,7 +330,7 @@ static int gop_gneedop(char *bot, char *com, char *par)
       r->countop++;
       if (r->countop > go_botnum) {
          // csativaltozo idozitett torles
-	 d = add_gdelay(chname, "delete", 3);
+	 add_gdelay(chname, "delete", 3);
 	 return 0;
       }
    }
