@@ -402,28 +402,28 @@ static int gop_gresp(char *bot, char *com, char *par)
 
 static cmd_t getops_bot[] =
 {
-  {"gop", "", (Function) botnet_grequest, "botnet_request"},
-  {"gop_spec", "", (Function) gop_gspec, "gop_spec"},
-  {"gop_needop", "", (Function) gop_gneedop, "gop_needop"},
-  {"gop_resp", "", (Function) gop_gresp, "gop_resp"},
-  {0, 0, 0, 0}
+  {"gop",        "", (IntFunc) botnet_grequest, "botnet_request"},
+  {"gop_spec",   "", (IntFunc) gop_gspec,       "gop_spec"},
+  {"gop_needop", "", (IntFunc) gop_gneedop,     "gop_needop"},
+  {"gop_resp",   "", (IntFunc) gop_gresp,       "gop_resp"},
+  {0,            0,  0,                         0}
 };
 
 static cmd_t getops_link[] =
 {
-  {"*", "", (Function) gop_glinkop, "gop_linkop"},
-  {0, 0, 0, 0}
+  {"*", "", (IntFunc) gop_glinkop, "gop_linkop"},
+  {0,   0,  0,                     0}
 };
 
 static cmd_t getops_mode[] =
 {
-  {"*", "", (Function) gop_gmodechange, "gop_modechange"},
-  {0, 0, 0, 0}
+  {"*", "", (IntFunc) gop_gmodechange, "gop_modechange"},
+  {0,   0,  0,                         0}
 };
 
 static cmd_t getops_join[] =
 {
-  {"*", "", (Function) gop_gjoin, "gop_join"},
-  {0, 0, 0, 0}
+  {"*", "", (IntFunc) gop_gjoin, "gop_join"},
+  {0,   0,  0,                   0}
 };
 

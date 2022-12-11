@@ -52,6 +52,6 @@ static int gnop_need(char *chname, char *type)
 
 static cmd_t getops_need[] =
 {
-  {"*", "", (Function) gnop_need, "gop_need"},
-  {0, 0, 0, 0}
+  {"*", "", (IntFunc) gnop_need, "gop_need"},
+  {0,   0,  0,                   0}
 };

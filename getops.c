@@ -21,7 +21,7 @@
 
 #define MODULE_NAME "getops"
 #define MAKING_GETOPS
-#define MODULE_VERSION "1.0.1"
+#define MODULE_VERSION "1.2"
 #include "../module.h"
 #include "../irc.mod/irc.h"
 #include "../server.mod/server.h"
@@ -70,7 +70,6 @@ static void getops_report(int idx, int details)
   if (details)
   dprintf(idx,"    getops using %d bytes\n", size);
 }
-	    
 
 static char *getops_close()
 {
@@ -99,7 +98,7 @@ static Function getops_table[] =
 char *getops_start(Function * global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, getops_table, 1, 1);
+  module_register(MODULE_NAME, getops_table, 1, 2);
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
     module_undepend(MODULE_NAME);
     return "This module requires Eggdrop 1.8.4 or later.";
@@ -124,4 +123,3 @@ char *getops_start(Function * global_funcs)
   add_builtins(H_link, getops_link);
   return NULL;
 }
-
