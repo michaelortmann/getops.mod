@@ -59,7 +59,6 @@ static char *nick_by_handle(char *handle, struct chanset_t *chan)
   char nuh[1024];
   memberlist *m;
       
-  Context;
   for (m = chan->channel.member; m && m->nick[0]; m = m->next) {
       if (!m->user) {
          egg_snprintf(nuh, sizeof nuh, "%s!%s", m->nick, m->userhost);

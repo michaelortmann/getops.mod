@@ -27,8 +27,7 @@ static void gaing_entrance(char *needthis, char *chname)
   tand_t *bot;
   struct chanset_t *chan = NULL;
   struct userrec *u;
-	      
-  Context;
+
   if ((!(chan = findchan_by_dname(chname))) || (ismember(chan, botname))) {
      return;
   }
@@ -113,7 +112,6 @@ static int botnet_grequest(char *bot, char *com, char *par)
    masklist *b;
    memberlist *m;
    
-   Context;
    subcom = newsplit(&par);
    chname = newsplit(&par);
    fromnick = newsplit(&par);
@@ -209,7 +207,6 @@ static int gop_gspec(char *bot, char *com, char *par)
    char *subcom, *chname, *usnick, data[256];
    struct chanset_t *chan = NULL;
 
-   Context;
    subcom = newsplit(&par);
    chname = newsplit(&par);
    usnick = newsplit(&par);
@@ -260,11 +257,9 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
    tand_t *bot;
    memberlist *m;
    
-   Context;
    chan = findchan_by_dname(chname);
    if (chan->channel.mode & CHANINV) {
       // putlog(LOG_MISC, "*", "getops.mod: tenyleg inviteos a csati %s", chname);
-      Context;
       if ((!egg_strcasecmp(mode, "+o")) && (!egg_strcasecmp(botname, victim))) {
          // putlog(LOG_MISC, "*", "getops.mod: opolas volt es en kaptam opot %s", chname);
          invt = 0;
@@ -292,7 +287,6 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
       u = get_user_by_handle(userlist, m->user->handle);
       // putlog(LOG_MISC, "*", "getops.mod: eljutva modnezesig, aldozat: %s", victim);
       if ((!egg_strcasecmp(mode, "+o")) && (!isop(botname, chan)) && (egg_strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
-         Context;
          i = nextbot(m->user->handle);
          // putlog(LOG_MISC, "*", "getops.mod: handle: %s i: %d", m->user->handle, i);
 	 if (i >= 0) {
@@ -321,7 +315,6 @@ static int gop_gneedop(char *bot, char *com, char *par)
    char *chname, data[256];
    struct reqop_t *r = NULL;
 
-   Context;
    chname = newsplit(&par);
    if (!(r = find_req(chname))) {
       r = add_req(chname);
@@ -368,7 +361,6 @@ static int gop_glinkop(char *bot, char *via)
    char *gnick, data[256];
    struct chanset_t *chan = NULL;
          
-   Context;
    if (egg_strcasecmp(bot, botnetnick)) {
       for (chan = chanset; chan; chan = chan->next) {
           if ((gnick = nick_by_handle(bot, chan)) && (ismember(chan, gnick)) && (!isop(gnick, chan)) && (isop(botname, chan))) {

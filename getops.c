@@ -48,7 +48,6 @@ static struct reqop_t *start_reqop = NULL;
 
 static void getops_hook_secondly()
 {
-   Context;
    check_gdelay();
 } 
 
@@ -57,7 +56,6 @@ static int getops_expmem()
 {
   int gosize = 0;  
 
-  Context;
   return gosize + gdelay_expmem() + reqop_expmem(); 
 }
 
@@ -65,7 +63,6 @@ static void getops_report(int idx, int details)
 {
   int size;
   
-  Context;
   size = getops_expmem();
   if (details)
   dprintf(idx,"    getops using %d bytes\n", size);
