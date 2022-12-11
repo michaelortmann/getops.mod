@@ -38,7 +38,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
 	     i = nextbot(bot->bot);
 	     if (i >= 0) {
-	        egg_snprintf(data, sizeof data, "gop key %s %s", chan->dname, botname);
+	        snprintf(data, sizeof data, "gop key %s %s", chan->dname, botname);
 		botnet_send_zapf(i, botnetnick, bot->bot, data);
 	        bots++;
 	     }
@@ -52,7 +52,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
 	     i = nextbot(bot->bot);
 	     if (i >= 0) {
-	        egg_snprintf(data, sizeof data, "gop invite %s %s", chan->dname, botname);
+	        snprintf(data, sizeof data, "gop invite %s %s", chan->dname, botname);
 		botnet_send_zapf(i, botnetnick, bot->bot, data);
 	        bots++;
 	     }
@@ -66,7 +66,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
 	     i = nextbot(bot->bot);
 	     if (i >= 0) {
-	        egg_snprintf(data, sizeof data, "gop unban %s %s %s!%s", chan->dname, botname, botname, botuserhost);
+	        snprintf(data, sizeof data, "gop unban %s %s %s!%s", chan->dname, botname, botname, botuserhost);
 		botnet_send_zapf(i, botnetnick, bot->bot, data);
 	        bots++;
 	     }
@@ -80,7 +80,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
 	     i = nextbot(bot->bot);
 	     if (i >= 0) {
-	        egg_snprintf(data, sizeof data, "gop op %s %s", chan->dname, botname);
+	        snprintf(data, sizeof data, "gop op %s %s", chan->dname, botname);
 		botnet_send_zapf(i, botnetnick, bot->bot, data);
 	        bots++;
 	     }
@@ -93,7 +93,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
 	     i = nextbot(bot->bot);
 	     if (i >= 0) {
-	        egg_snprintf(data, sizeof data, "gop limit %s %s", chan->dname, botname);
+	        snprintf(data, sizeof data, "gop limit %s %s", chan->dname, botname);
 		botnet_send_zapf(i, botnetnick, bot->bot, data);
 	        bots++;
 	     }
@@ -138,7 +138,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
 	        dprintf(DP_MODE, "MODE %s +o %s\n", chan->dname, fromnick);
 	        i = nextbot(bot);
 		if (i >= 0) {
-		   egg_snprintf(data, sizeof data, "gop_resp opping %s on %s", fromnick, chan->dname);
+		   snprintf(data, sizeof data, "gop_resp opping %s on %s", fromnick, chan->dname);
 		   botnet_send_zapf(i, botnetnick, bot, data);
 		}
 		if (egg_strcasecmp(fromnick, bot))
@@ -152,7 +152,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
          if (i < 0)
            return 0;
          if (chan->channel.mode & CHANKEY) {
-               egg_snprintf(data, sizeof data, "gop takekey %s %s", chan->dname, chan->channel.key);
+               snprintf(data, sizeof data, "gop takekey %s %s", chan->dname, chan->channel.key);
 	       botnet_send_zapf(i, botnetnick, bot, data);
 	       putlog(LOG_MISC, "*", "GetOps.mod: Gave key for %s to %s", chan->dname, bot);
          }
@@ -174,7 +174,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
 	       i = nextbot(bot);
 	       if (i < 0)
 	           return 0;
-	       egg_snprintf(data, sizeof data, "gop_spec lim %s", chan->dname);
+	       snprintf(data, sizeof data, "gop_spec lim %s", chan->dname);
 	       botnet_send_zapf(i, botnetnick, bot, data);
 	    }
       } else if (!egg_strcasecmp(subcom, "unban")) {                               
@@ -193,7 +193,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
          }                                                                            
          if ((bans > 0))                                            
               putlog(LOG_MISC, "*", "GetOps.mod: %s requested unban on %s (unbanning)", bot, chan->dname);
-	 egg_snprintf(data, sizeof data, "gop_spec ban %s", chan->dname);
+	 snprintf(data, sizeof data, "gop_spec ban %s", chan->dname);
 	 botnet_send_zapf(i, botnetnick, bot, data);
          
       }  
@@ -230,7 +230,7 @@ static int gop_gspec(char *bot, char *com, char *par)
 	 if (i < 0)
 	    return 0;
 	 putlog(LOG_MISC, "*", "GetOps.mod: %s invited me to %s. Accepting...", usnick, chname);
-	 egg_snprintf(data, sizeof data, "gop invite %s %s", chan->dname, botname);
+	 snprintf(data, sizeof data, "gop invite %s %s", chan->dname, botname);
          botnet_send_zapf(i, botnetnick, bot, data);
       }
    }
@@ -241,7 +241,7 @@ static int gop_gspec(char *bot, char *com, char *par)
 	 if (i < 0)
 	    return 0;
 	 putlog(LOG_MISC, "*", "GetOps.mod: Offering op to %s on %s", usnick, chname);
-	 egg_snprintf(data, sizeof data, "gop_needop %s", chan->dname);
+	 snprintf(data, sizeof data, "gop_needop %s", chan->dname);
          botnet_send_zapf(i, botnetnick, bot, data);
       }
    }
@@ -270,7 +270,7 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
 	     if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname)) && (!ismember(chan, bot->bot))) {
 		i = nextbot(bot->bot);
 		if (i >= 0) {
-		   egg_snprintf(data, sizeof data, "gop_spec inv %s %s", chan->dname, botname);
+		   snprintf(data, sizeof data, "gop_spec inv %s %s", chan->dname, botname);
 		   botnet_send_zapf(i, botnetnick, bot->bot, data);
 		   invt++;
 		}
@@ -290,7 +290,7 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
          i = nextbot(m->user->handle);
          // putlog(LOG_MISC, "*", "getops.mod: handle: %s i: %d", m->user->handle, i);
 	 if (i >= 0) {
-	    egg_snprintf(data, sizeof data, "gop op %s %s", chname, botname);
+	    snprintf(data, sizeof data, "gop op %s %s", chname, botname);
 	    botnet_send_zapf(i, botnetnick, m->user->handle, data);
             // putlog(LOG_MISC, "*", "getops.mod: ezeket kuldom el: botnak: %s cucc: %s", m->user->handle, data);
 	 }
@@ -298,7 +298,7 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
       if ((!egg_strcasecmp(mode, "-o")) && (isop(botname, chan)) && (egg_strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
          i = nextbot(m->user->handle);
          if (i >= 0) {
-            egg_snprintf(data, sizeof data, "gop_needop %s", chname);
+            snprintf(data, sizeof data, "gop_needop %s", chname);
 	    botnet_send_zapf(i, botnetnick, m->user->handle, data);
          }
       }	  
@@ -330,7 +330,7 @@ static int gop_gneedop(char *bot, char *com, char *par)
    i = nextbot(bot);
    if (i < 0)
       return 0;   
-   egg_snprintf(data, sizeof data, "gop op %s %s", chname, botname);
+   snprintf(data, sizeof data, "gop op %s %s", chname, botname);
    botnet_send_zapf(i, botnetnick, bot, data);      
    return 0;
 } 
@@ -348,7 +348,7 @@ static int gop_gjoin(char *nick, char *uhost, char *hand, char *chname)
               i = nextbot(hand);
 	      if (i < 0)
                  return 0;
-	      egg_snprintf(data, sizeof data, "gop_needop %s", chname); 
+	      snprintf(data, sizeof data, "gop_needop %s", chname); 
               botnet_send_zapf(i, botnetnick, hand, data);
 	   }
    }
@@ -367,7 +367,7 @@ static int gop_glinkop(char *bot, char *via)
               // putlog(LOG_MISC, "*", "getops.mod: ennek kell opot adni: nick: %s csati: %s (%s)", gnick, chan->dname, botname);
               i = nextbot(bot);
 	      if (i >= 0) {
-	         egg_snprintf(data, sizeof data, "gop_needop %s", chan->dname);
+	         snprintf(data, sizeof data, "gop_needop %s", chan->dname);
 	         botnet_send_zapf(i, botnetnick, bot, data);
 	      }
 	  }      

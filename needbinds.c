@@ -37,13 +37,13 @@ static int gnop_need(char *chname, char *type)
 	    i = nextbot(bot->bot);
 	    if (i >= 0) {
 	       // putlog(LOG_MISC, "*", "getops.mod: opkeres megy %s botnak", bot->bot);
-	       egg_snprintf(data, sizeof data, "gop op %s %s", chan->dname, botname);
+	       snprintf(data, sizeof data, "gop op %s %s", chan->dname, botname);
 	       botnet_send_zapf(i, botnetnick, bot->bot, data);
             }
 	 }
      }
   } else {
-     egg_snprintf(needthis, sizeof needthis, "%s", type);
+     snprintf(needthis, sizeof needthis, "%s", type);
      putlog(LOG_MISC, "*", "GetOps.mod: Need %s on chan %s", type, chname);
      gaing_entrance(needthis, chname);
   }

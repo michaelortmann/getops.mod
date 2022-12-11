@@ -1,4 +1,5 @@
 1.2
+- egg_snprintf() -> snprintf() (Michael Ortmann)
 - Remove Context (Michael Ortmann)
 - Fix unused but set variable (Michael Ortmann)
 - Fix incompatible pointer types (Michael Ortmann)

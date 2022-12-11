@@ -61,7 +61,7 @@ static char *nick_by_handle(char *handle, struct chanset_t *chan)
       
   for (m = chan->channel.member; m && m->nick[0]; m = m->next) {
       if (!m->user) {
-         egg_snprintf(nuh, sizeof nuh, "%s!%s", m->nick, m->userhost);
+         snprintf(nuh, sizeof nuh, "%s!%s", m->nick, m->userhost);
          m->user = get_user_by_host(nuh);
       }
       if (m->user && !rfc_casecmp(m->user->handle, handle)) {
