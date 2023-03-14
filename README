@@ -72,12 +72,9 @@ For any other problems, I'm sorry but no support will be provided.
 Latest version
 --------------
 
-This module is no longer developed. For compatibility updates, look at:
-
-http://eggdrop.egg6.net/modules/
-
-You can also find here other 3rd party modules updated by me to run on recent
-eggdrop versions.
+You can obtain the latest version from
+https://ftp.eggheads.org/pub/eggdrop/modules/ and
+https://github.com/michaelortmann/getops.mod
 
 
 License
