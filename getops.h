@@ -47,15 +47,6 @@ static void del_req(struct reqop_t *reqop);
 static void reqop_free_mem();
 static int reqop_expmem();
 
-/* stuff */
-#ifndef strncpyz
-#define strncpyz(target, source, len) do {      \
-        strncpy((target), (source), (len) - 1); \
-	        (target)[(len) - 1] = 0;                \
-		} while (0)
-#endif
-		
 #endif /* MAKING_GETOPS */
-	
-#endif /* _EGG_MOD_GETOPS_GETOPS_H */
 
+#endif /* _EGG_MOD_GETOPS_GETOPS_H */

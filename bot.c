@@ -31,7 +31,7 @@ static void gaing_entrance(char *needthis, char *chname)
   if ((!(chan = findchan_by_dname(chname))) || (ismember(chan, botname))) {
      return;
   }
-  if (!egg_strcasecmp(needthis, "key")) {
+  if (!strcasecmp(needthis, "key")) {
      // putlog(LOG_MISC, "*", "--- GETOPS MOD LOG --- Keyt kerek botoktol");
      for (bot = tandbot; bot; bot = bot->next) {
          u = get_user_by_handle(userlist, bot->bot);
@@ -46,7 +46,7 @@ static void gaing_entrance(char *needthis, char *chname)
      }
      putlog(LOG_MISC, "*", "GetOps.mod: Requested key on chan %s", chan->dname);
   }
-  if (!egg_strcasecmp(needthis, "invite")) {
+  if (!strcasecmp(needthis, "invite")) {
      for (bot = tandbot; bot; bot = bot->next) {
          u = get_user_by_handle(userlist, bot->bot);
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
@@ -60,7 +60,7 @@ static void gaing_entrance(char *needthis, char *chname)
      }
      putlog(LOG_MISC, "*", "GetOps.mod: Requested invite on chan %s", chan->dname);
   }
-  if (!egg_strcasecmp(needthis, "unban")) {
+  if (!strcasecmp(needthis, "unban")) {
      for (bot = tandbot; bot; bot = bot->next) {
          u = get_user_by_handle(userlist, bot->bot);
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
@@ -74,7 +74,7 @@ static void gaing_entrance(char *needthis, char *chname)
      }
      putlog(LOG_MISC, "*", "GetOps.mod: Requested unban on chan %s", chan->dname);
   }
-  if (!egg_strcasecmp(needthis, "op")) {
+  if (!strcasecmp(needthis, "op")) {
      for (bot = tandbot; bot; bot = bot->next) {
          u = get_user_by_handle(userlist, bot->bot);
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
@@ -87,7 +87,7 @@ static void gaing_entrance(char *needthis, char *chname)
 	 }
      }
   }
-  if (!egg_strcasecmp(needthis, "limit")) {
+  if (!strcasecmp(needthis, "limit")) {
      for (bot = tandbot; bot; bot = bot->next) {
          u = get_user_by_handle(userlist, bot->bot);
 	 if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname))) {
@@ -119,7 +119,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
    if ((!chname[0]) || (!fromnick[0]) || (!(chan = findchan_by_dname(chname)))) {
       return 0;
    }
-   if (!egg_strcasecmp(subcom, "takekey")) {
+   if (!strcasecmp(subcom, "takekey")) {
       if ((chname[0]) && (fromnick[0]) && (chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
          putlog(LOG_MISC, "*", "GetOps.mod: %s (%s) gave me the key for %s", bot, fromnick, chan->dname);
          dprintf(DP_SERVER, "JOIN %s %s\n", chan->dname, fromnick);
@@ -129,7 +129,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
          // putlog(LOG_MISC, "*", "GetOps.mod: %s nem vagyok opos %s csatin", bot, chan->dname);
          return 0;
       }
-      if (!egg_strcasecmp(subcom, "op")) {
+      if (!strcasecmp(subcom, "op")) {
          // putlog(LOG_MISC, "*", "getops.mod: opot ker %s on %s", bot, chan->dname);
          u = get_user_by_handle(userlist, bot);
          if ((m = ismember(chan, fromnick)) && (isop(botname, chan)) && (!chan_issplit(m)) && (matchattr(u, "b|-", chan->dname)) &&
@@ -141,13 +141,13 @@ static int botnet_grequest(char *bot, char *com, char *par)
 		   snprintf(data, sizeof data, "gop_resp opping %s on %s", fromnick, chan->dname);
 		   botnet_send_zapf(i, botnetnick, bot, data);
 		}
-		if (egg_strcasecmp(fromnick, bot))
+		if (strcasecmp(fromnick, bot))
 		   putlog(LOG_MISC, "*", "GetOps.mod: Opped %s on chan %s (using nick %s)", bot, chan->dname, fromnick);
 	        else 
 	           putlog(LOG_MISC, "*", "GetOps.mod: Opped %s on chan %s", bot, chan->dname);
 	     }
          }
-      } else if (!egg_strcasecmp(subcom, "key")) {
+      } else if (!strcasecmp(subcom, "key")) {
          i = nextbot(bot);
          if (i < 0)
            return 0;
@@ -156,18 +156,18 @@ static int botnet_grequest(char *bot, char *com, char *par)
 	       botnet_send_zapf(i, botnetnick, bot, data);
 	       putlog(LOG_MISC, "*", "GetOps.mod: Gave key for %s to %s", chan->dname, bot);
          }
-      } else if (!egg_strcasecmp(subcom, "invite")) {                           
+      } else if (!strcasecmp(subcom, "invite")) {
             if (chan->channel.mode & CHANINV) {                                       
                if (!fromnick[0])                                                       
 	           return 0;                                                             
 	       dprintf(DP_SERVER, "INVITE %s %s\n", fromnick, chan->dname);          
-	       if (egg_strcasecmp(fromnick, bot))                                  
+	       if (strcasecmp(fromnick, bot))
 	          putlog(LOG_MISC, "*", "GetOps.mod: invited %s (using nick %s) to %s", bot, fromnick, chan->dname);
 	       else                                                                
 	           putlog(LOG_MISC, "*", "GetOps.mod: invited %s to %s", bot, chan->dname);
 	                                                                         
             }                                                                         
-      } else if (!egg_strcasecmp(subcom, "limit")) {                            
+      } else if (!strcasecmp(subcom, "limit")) {
             if (chan->channel.maxmembers > -1) {                                      
 	       add_mode(chan, '+', 'l', int_to_base10(chan->channel.members + 1));     
 	       putlog(LOG_MISC, "*", "GetOps.mod: %s requested limit raise on chan %s", bot, chan->dname);
@@ -177,7 +177,7 @@ static int botnet_grequest(char *bot, char *com, char *par)
 	       snprintf(data, sizeof data, "gop_spec lim %s", chan->dname);
 	       botnet_send_zapf(i, botnetnick, bot, data);
 	    }
-      } else if (!egg_strcasecmp(subcom, "unban")) {                               
+      } else if (!strcasecmp(subcom, "unban")) {
          if (!fromhost[0]) {                                                           
               putlog(LOG_MISC, "*", "GetOps.mod: ERROR: %s requested unban the wrong way (update the getops.tcl in %s)", bot, bot);
 	      return 0;
@@ -210,21 +210,21 @@ static int gop_gspec(char *bot, char *com, char *par)
    subcom = newsplit(&par);
    chname = newsplit(&par);
    usnick = newsplit(&par);
-   if (!egg_strcasecmp(subcom, "lim")) {
+   if (!strcasecmp(subcom, "lim")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
 	 if (!find_gdelay(chname))
             add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }
    }
-   if (!egg_strcasecmp(subcom, "ban")) {
+   if (!strcasecmp(subcom, "ban")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
          if (!find_gdelay(chname))
             add_gdelay(chname, "join", 3);
          // dprintf(DP_SERVER, "JOIN %s\n", chan->dname);
       }
    }
-   if (!egg_strcasecmp(subcom, "inv")) {
+   if (!strcasecmp(subcom, "inv")) {
       if ((chan = findchan_by_dname(chname)) && (!ismember(chan, botname))) {
          i = nextbot(bot);
 	 if (i < 0)
@@ -235,7 +235,7 @@ static int gop_gspec(char *bot, char *com, char *par)
       }
    }
    // not implemented yet because of compatibility, maybe in future releases
-   if (!egg_strcasecmp(subcom, "needop")) {
+   if (!strcasecmp(subcom, "needop")) {
       if ((chan = findchan_by_dname(chname)) && (ismember(chan, usnick)) && (!isop(usnick, chan)) && (isop(botname, chan))) {
          i = nextbot(bot);
 	 if (i < 0)
@@ -260,7 +260,7 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
    chan = findchan_by_dname(chname);
    if (chan->channel.mode & CHANINV) {
       // putlog(LOG_MISC, "*", "getops.mod: tenyleg inviteos a csati %s", chname);
-      if ((!egg_strcasecmp(mode, "+o")) && (!egg_strcasecmp(botname, victim))) {
+      if ((!strcasecmp(mode, "+o")) && (!strcasecmp(botname, victim))) {
          // putlog(LOG_MISC, "*", "getops.mod: opolas volt es en kaptam opot %s", chname);
          invt = 0;
 	 invm = 2;
@@ -281,12 +281,12 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
          putlog(LOG_MISC, "*", "GetOps.mod: Got op, inviting other bots to %s", chname);
       }
    }
-   if (victim && ((!egg_strcasecmp(mode, "+o")) || (!egg_strcasecmp(mode, "-o")))) {
+   if (victim && ((!strcasecmp(mode, "+o")) || (!strcasecmp(mode, "-o")))) {
     m = ismember(chan, victim);
     if (m->user) {
       u = get_user_by_handle(userlist, m->user->handle);
       // putlog(LOG_MISC, "*", "getops.mod: eljutva modnezesig, aldozat: %s", victim);
-      if ((!egg_strcasecmp(mode, "+o")) && (!isop(botname, chan)) && (egg_strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
+      if ((!strcasecmp(mode, "+o")) && (!isop(botname, chan)) && (strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
          i = nextbot(m->user->handle);
          // putlog(LOG_MISC, "*", "getops.mod: handle: %s i: %d", m->user->handle, i);
 	 if (i >= 0) {
@@ -295,7 +295,7 @@ static int gop_gmodechange(char *nick, char *uhost, char *hand, char *chname, ch
             // putlog(LOG_MISC, "*", "getops.mod: ezeket kuldom el: botnak: %s cucc: %s", m->user->handle, data);
 	 }
       }
-      if ((!egg_strcasecmp(mode, "-o")) && (isop(botname, chan)) && (egg_strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
+      if ((!strcasecmp(mode, "-o")) && (isop(botname, chan)) && (strcasecmp(botname, victim)) && (matchattr(u, "b|-", chan->dname))) {
          i = nextbot(m->user->handle);
          if (i >= 0) {
             snprintf(data, sizeof data, "gop_needop %s", chname);
@@ -342,7 +342,7 @@ static int gop_gjoin(char *nick, char *uhost, char *hand, char *chname)
    struct chanset_t *chan = NULL;
    struct userrec *u; 
 
-   if ((chan = findchan_by_dname(chname)) && (egg_strcasecmp(nick, botname))) {
+   if ((chan = findchan_by_dname(chname)) && (strcasecmp(nick, botname))) {
        u = get_user_by_handle(userlist, hand);
            if ((matchattr(u, "b|-", chan->dname)) && (matchattr(u, "o|o", chan->dname)) && (!matchattr(u, "d|d", chan->dname))) {
               i = nextbot(hand);
@@ -361,7 +361,7 @@ static int gop_glinkop(char *bot, char *via)
    char *gnick, data[256];
    struct chanset_t *chan = NULL;
          
-   if (egg_strcasecmp(bot, botnetnick)) {
+   if (strcasecmp(bot, botnetnick)) {
       for (chan = chanset; chan; chan = chan->next) {
           if ((gnick = nick_by_handle(bot, chan)) && (ismember(chan, gnick)) && (!isop(gnick, chan)) && (isop(botname, chan))) {
               // putlog(LOG_MISC, "*", "getops.mod: ennek kell opot adni: nick: %s csati: %s (%s)", gnick, chan->dname, botname);

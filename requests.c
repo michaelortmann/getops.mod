@@ -38,7 +38,7 @@ static struct reqop_t *add_req(char *chan)
     return NULL;
   r->next = start_reqop;
   start_reqop = r;
-  strncpyz(r->chan, chan, sizeof r->chan);
+  strlcpy(r->chan, chan, sizeof r->chan);
   r->countop = 0;
   return r;
 }

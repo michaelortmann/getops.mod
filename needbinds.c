@@ -27,7 +27,7 @@ static int gnop_need(char *chname, char *type)
   struct userrec *u;
   tand_t *bot;
   
-  if (!egg_strcasecmp(type, "op")) {
+  if (!strcasecmp(type, "op")) {
      putlog(LOG_MISC, "*", "GetOps.mod: Need op on chan %s", chname);
      for (bot = tandbot; bot; bot = bot->next) {
          // putlog(LOG_MISC, "*", "getops.mod: opkeres %s bottol", bot->bot);

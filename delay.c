@@ -24,7 +24,7 @@ static struct delay_t *find_gdelay(char *chan)
   struct delay_t *d = NULL;
 
   for (d = start_delay; d; d = d->next)
-    if ((!rfc_casecmp(d->chan, chan)) && (!egg_strcasecmp(d->todowhat, "join")))
+    if ((!rfc_casecmp(d->chan, chan)) && (!strcasecmp(d->todowhat, "join")))
       return d;
   return NULL;
 }
@@ -38,9 +38,9 @@ static struct delay_t *add_gdelay(char *chan, char *micsinal, int i)
     return NULL;
   d->next = start_delay;
   start_delay = d;
-  strncpyz(d->chan, chan, sizeof d->chan);
+  strlcpy(d->chan, chan, sizeof d->chan);
   d->reqtime = now + i;
-  strncpyz(d->todowhat, micsinal, sizeof d->todowhat);
+  strlcpy(d->todowhat, micsinal, sizeof d->todowhat);
   // putlog(LOG_DEBUG, "*", "botnetop.mod: new delay record created for %s (address: %u)", chan, d);
   return d;
 }
@@ -73,13 +73,13 @@ static void check_gdelay()
      dnext = d->next;
      if ((d->reqtime) && (d->reqtime <= now)) {
        // bnop_askbot(d->bot, d->chan);
-       if (!egg_strcasecmp(d->todowhat, "join")) {
+       if (!strcasecmp(d->todowhat, "join")) {
           // putlog(LOG_MISC, "*", "getops.mod: most joinolok idozitessel");
 	  dprintf(DP_SERVER, "JOIN %s\n", d->chan);
           d->reqtime = 0;
           del_gdelay(d);
        }
-       if (!egg_strcasecmp(d->todowhat, "delete")) {
+       if (!strcasecmp(d->todowhat, "delete")) {
           // csativaltozos listabol rekord torles
 	  if (!(r = find_req(d->chan))) {
 	     r = NULL;

@@ -21,7 +21,7 @@
 
 #define MODULE_NAME "getops"
 #define MAKING_GETOPS
-#define MODULE_VERSION "1.2"
+#define MODULE_VERSION "1.3"
 #include "../module.h"
 #include "../irc.mod/irc.h"
 #include "../server.mod/server.h"
@@ -95,7 +95,7 @@ static Function getops_table[] =
 char *getops_start(Function * global_funcs)
 {
   global = global_funcs;
-  module_register(MODULE_NAME, getops_table, 1, 2);
+  module_register(MODULE_NAME, getops_table, 1, 3);
   if (!module_depend(MODULE_NAME, "eggdrop", 108, 4)) {
     module_undepend(MODULE_NAME);
     return "This module requires Eggdrop 1.8.4 or later.";
